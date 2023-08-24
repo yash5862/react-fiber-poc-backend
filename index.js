@@ -14,7 +14,7 @@ const port = 4000;
 const db = mysql.createConnection ({
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: 'Admin@123',
     database: 'fabric'
 });
 
@@ -27,8 +27,8 @@ db.connect((err) => {
 });
 global.db = db;
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json()); // parse form data client
+app.use(bodyParser.urlencoded({ extended: true, limit: '100mb' }));
+app.use(bodyParser.json({ limit: '10mb' })); // parse form data client
 
 app.get('/view/first', getFirstModel);
 
